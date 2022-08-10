@@ -1,0 +1,27 @@
+{{ template "header" . }}
+<div class="container">
+    <h1>Tambah Task</h1>
+    <form action="/tasks/create" method="POST">
+        <div>
+            <label for="name">Nama Task</label>
+            <input type="text" name="name" autocomplete="off" required>
+        </div>
+        <div>
+            <label for="deadline">Deadline</label>
+            <input type="date" name="deadline" autocomplete="off" required>
+        </div>
+        <div>
+            <label for="status">Status</label>
+            <select name="status" id="status">
+                <option value="open">Open</option>
+                <option value="progress">On Progress</option>
+                <option value="done">Done</option>
+            </select>
+        </div>
+        <div class="submits">
+            <a href="/tasks" class="btn"><span class="fa fa-arrow-left"></span> Kembali</a>
+            <button type="submit" value="Add New Task" class="btn btn-success"><span class="fa fa-add"></span>Tambah Task</button>
+        </div>
+    </form>
+</div>
+{{ template "footer" . }}

@@ -1,0 +1,62 @@
+{{ template "header" . }}
+<div class="container">
+    <h1>Edit Task - {{.task.Name}}#{{.task.ID}}</h1>
+    <form action="/tasks/{{.task.ID}}/update" method="POST">
+        <div>
+            <label for="name">Nama Task</label>
+            <input type="text" name="name" autocomplete="off" required value="{{.task.Name}}">
+        </div>
+        <div>
+            <label for="deadline">Deadline</label>
+            <input type="date" name="deadline" autocomplete="off" required value="{{date_format .task.Deadline "2006-01-02" }}">
+        </div>
+        <div>
+            <label for="status">Status</label>
+            <select id="status" name="status">
+                <option value="open" {{ if eq .task.Status "open" }} selected {{ end }}>Open</option>
+                <option value="progress" {{ if eq .task.Status "progress" }} selected {{ end }}>On Progress</option>
+                <option value="done" {{ if eq .task.Status "done" }} selected {{ end }}>Done</option>
+            </select>
+        </div>
+        <div class="submits">
+            <a href="/tasks" class="btn"><span class="fa fa-arrow-left"></span> Kembali</a>
+            <button type="submit"  class="btn btn-success"><span class="fa fa-pencil"></span>Edit Task</button>
+        </div>
+    </form>
+
+    <h2>Daftar Assignee</h2>
+    <form action="/tasks/{{.task.ID}}/assignee/add" method="POST">
+        <select name="employee-id" class="assign-select">
+            {{ range .allEmployees}}
+            <option value="{{.ID}}">{{.Name}}</option>
+            {{ end }}
+        </select>
+        <button type="submit" class="btn btn-success"><span class="fa fa-plus"></span>Tambah Assignee</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Nama Assignee</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range $i, $el := .task.Assignees}}
+            <tr>
+                <td>{{ add $i 1 }}</td>
+                <td>{{ .Name }}</td>
+                <td>
+                    <span>
+                        <form action="/tasks/{{$.task.ID}}/assignee/remove" method="POST" class="inline-block">
+                            <input type="hidden" name="employee-id" value="{{.ID}}">
+                            <button type="submit" class="btn btn-danger"><span class="fa fa-trash"></span>Delete</button>
+                        </form>
+                    </span>
+                </td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
+</div>
+{{ template "footer" . }}

@@ -1,0 +1,22 @@
+{{ template "header" . }}
+<div class="container">
+    <h1>Edit Pegawai - {{.employee.Name}}</h1>
+    <form action="/employees/{{.employee.ID}}/update" method="POST">
+        <div>
+            <label for="name">Nama Pegawai</label>
+            <input type="text" name="name" autocomplete="off" required value="{{.employee.Name}}">
+        </div>
+        <div>
+            <label for="gender">Jenis Kelamin</label>
+            <select name="gender" id="gender">
+                <option value="male" {{ if eq .employee.Gender "male" }} selected {{ end }}>Laki-Laki</option>
+                <option value="female" {{ if eq .employee.Gender "female" }} selected {{ end }}>Perempuan</option>
+            </select>
+        </div>
+        <div class="submits">
+            <a href="/employees" class="btn"><span class="fa fa-arrow-left"></span> Kembali</a>
+            <button type="submit" class="btn btn-success"><span class="fa fa-pencil"></span>Edit Pegawai</button>
+        </div>
+    </form>
+</div>
+{{ template "footer" . }}

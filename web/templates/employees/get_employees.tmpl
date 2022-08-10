@@ -1,0 +1,38 @@
+{{ template "header" . }}
+<div class="container">
+    <div>
+        <h1>Daftar Pegawai</h1>
+        <p>
+            <a href="/tasks" class="btn"><span class="fa fa-briefcase"></span> Ke Daftar Tasks</a>
+            <a href="/employees/add" class="btn btn-success"><span class="fa fa-plus"></span> Tambah Pegawai</a>
+        </p>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Nama Pegawai</th>
+                <th>Jenis Kelamin</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{ range $i, $el := .employees}}
+            <tr>
+                <td>{{ add $i 1 }}</td>
+                <td>{{ .Name }}</td>
+                <td>{{ if eq .Gender "male" }}Laki-Laki{{ else }}Perempuan{{ end }}</td>
+                <td>
+                    <span>
+                        <a href="/employees/{{.ID}}/edit" class="btn"><span class="fa fa-pencil"></span>Edit</a>
+                        <form action="/employees/{{.ID}}/delete" method="POST">
+                            <button type="submit" class="btn btn-danger"><span class="fa fa-trash"></span>Delete</button>
+                        </form>
+                    </span>
+                </td>
+            </tr>
+        {{ end }}
+        </tbody>
+    </table>
+</div>
+{{ template "footer" . }}

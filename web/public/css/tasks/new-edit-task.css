@@ -1,0 +1,35 @@
+h1,
+h2 {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input {
+  margin-top: 5px;
+  line-height: 30px;
+  width: 70%;
+}
+
+select {
+  margin-top: 5px;
+  line-height: 30px;
+  width: 70%;
+  height: 36px;
+}
+
+.submits {
+  margin-top: 20px;
+}
+
+table {
+  width: 70%;
+}
+
+select.assign-select {
+  width: 30%;
+  height: 38px;
+}

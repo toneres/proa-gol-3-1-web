@@ -1,0 +1,64 @@
+{{ template "header" . }}
+<div class="container">
+    <div>
+        <h1>Daftar Task</h1>
+        <p>
+            <a href="/employees" class="btn"><span class="fa fa-person"></span> Ke Daftar Pegawai</a>
+            <a href="/tasks/add" class="btn btn-success"><span class="fa fa-plus"></span> Tambah Task</a>
+        </p>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Nama Tugas</th>
+                <th>Assignee</th>
+                <th>Deadline</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{ range $i, $el := .tasks}}
+            <tr>
+                <td>{{ add $i 1 }}</td>
+                <td>{{ .Name }}#{{ .ID }}</td>
+                <td>
+                    {{ if eq (len .Assignees) 0 }}
+                        Belum Ada Assignee
+                    {{ else if eq (len .Assignees) 1 }}
+                        {{ (index .Assignees 0).Name }}
+                    {{ else }}
+                        {{ len .Assignees }} Pegawai
+                    {{ end }}
+                </td>
+                <td>{{ date_format .Deadline "02 January 2006"}}</td>
+                <td>
+                    {{ if eq .Status "open"}}
+                    <span class="open-text">
+                        <span class="fa fa-door-open"></span> Open 
+                    </span>
+                    {{ else if eq .Status "progress"}}
+                    <span class="progress-text">
+                        <span class="fa fa-play"></span> On Progress
+                    </span>
+                    {{ else if eq .Status "done"}}
+                    <span class="done-text">
+                        <span class="fa fa-check"></span> Done
+                    </span>
+                    {{ end }}
+                </td>
+                <td>
+                    <span>
+                        <a href="/tasks/{{.ID}}/edit" class="btn"><span class="fa fa-pencil"></span>Edit</a>
+                        <form action="/tasks/{{.ID}}/delete" method="POST">
+                            <button type="submit" class="btn btn-danger"><span class="fa fa-trash"></span> Delete</button>
+                        </form>
+                    </span>
+                </td>
+            </tr>
+        {{ end }}
+        </tbody>
+    </table>
+</div>
+{{ template "footer" . }}

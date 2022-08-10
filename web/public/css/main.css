@@ -1,0 +1,178 @@
+/* CSS untuk style secara umum (layar FullHD XL)  */
+/* Minimal CSS Reset */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* CSS untuk Dipakai Halaman Umum */
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  font-family: "Karla", sans-serif;
+}
+
+.container {
+  max-width: 1320px;
+  padding: 0 12px;
+  margin: 0 auto;
+}
+
+.btn {
+  border: none;
+  padding: 10px 20px;
+  background-color: #6464f4;
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.5s;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: #4444f4;
+}
+
+.fa {
+  margin-left: 2px;
+  margin-right: 5px;
+}
+
+.btn.btn-success {
+  background-color: #15a244;
+}
+
+.btn.btn-success:hover {
+  background-color: #26914b;
+}
+
+.btn.btn-danger {
+  background-color: #e63b3b;
+}
+.btn.btn-danger:hover {
+  background-color: #c43232;
+}
+
+.open-text {
+  color: #008eed;
+}
+
+.progress-text {
+  color: #6464f4;
+}
+
+.done-text {
+  color: #15a244;
+}
+
+footer {
+  margin-top: 80px;
+}
+
+footer .container {
+  padding-top: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+  margin-top: 20px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+thead tr {
+  background-color: #6464f4;
+  color: white;
+}
+
+.inline-block {
+  display: inline-block;
+}
+/* 
+BREAKPOINT:
+XS, untuk ukuran layar smartphone dan handphone kecil <= 576px
+S, untuk ukuran layar tablet kecil dan smartphone <= 768px
+M, untuk ukuran layar tablet <= 992px
+L, untuk ukuran layar tablet besar, monitor kecil, atau laptop kecil <= 1200px
+XL, untuk ukuran layar monitor HD <= 1400px
+XXL, untuk ukuran layar monitor FullHD >1400px (default)
+*/
+
+/*Media query untuk layar XL dan lebih kecil*/
+@media (max-width: 1400px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/*Media query untuk layar L dan lebih kecil*/
+@media (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+/*Media query untuk layar M dan lebih kecil*/
+@media (max-width: 992px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+/*Media query untuk layar S dan lebih kecil*/
+@media (max-width: 768px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+/*Media query untuk layar XS*/
+@media (max-width: 576px) {
+  .container {
+    max-width: 100%;
+  }
+}
